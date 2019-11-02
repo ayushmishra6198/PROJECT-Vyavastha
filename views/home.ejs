@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <style>
+          h1{
+              color: #fff;
+              margin-left: 113px;
+
+          }
+          h2{
+              color: #fff;
+              margin-left: 291px;
+
+          }
+            body{
+                font-family: arial;
+                margin: 0;
+            }
+            nav{
+                background: #ff5353;
+                padding: 20px 10px;
+            }
+            nav ul{
+                max-width: 960px;
+                margin: 0px 1px 1px 80%;
+
+                padding: 0;
+            }
+            nav li{
+                list-style-type: none;
+                display: inline-block;
+                margin: 0 10px 0 0;
+            }
+            nav a{
+                color: #fff;
+                font-size: 18px;
+                background: rgba(255,255,255,0.2);
+                text-decoration: none;
+                padding: 10px;
+                display: block;
+            }
+            main, header{
+                max-width: 960px;
+                margin: 30px auto;
+                padding: 0 10px;
+                color: #333;
+            }
+            body{
+    background: #0d1521;
+    font-family: tahoma;
+    color: #989898;
+}
+        </style>
+        </style>
+        <meta charset="utf-8">
+        <title>PROJECT APPROVAL</title>
+    </head>
+    <body>
+        
+        <nav>
+            <ul>
+                    <% if(user){%>
+                    <li><a href="/auth/logout">Logout</a></li>
+                    <%}else{%>
+                    <li><a href="/auth/login">Login</a></li>
+                    <%}%>
+                    <li><a href="/">Homepage</a></li>
+                    <li><a href="/profile">Profile</a></li>
+            </ul>
+        </nav>
+        <header>
+            <h1>PROJECT APPROVAL MANAGEMENT SYSTEM </h1>
+            <h2>Powered by specs coders</h2>
+        </header>
+        <main>
+            <img src="/assets/s.png" alt="">
+        </main>
+    </body>
+</html>

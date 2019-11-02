@@ -1,0 +1,169 @@
+<html>
+    <head>
+        <style>
+        body{
+    background: #0d1521;
+    font-family: tahoma;
+    color: #989898;
+}
+
+#todo-table{
+    position: relative;
+    width: 95%;
+    background: #090d13;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#todo-table form:after{
+    margin: 0;
+    content: '';
+    display: block;
+    clear: both;
+}
+
+input[type="text"]{
+    width: 70%;
+    padding: 20px;
+    background:#181c22;
+    border: 0;
+    float: left;
+    font-size: 20px;
+    color: #989898;
+}
+
+button{
+    padding: 20px;
+    width: 30%;
+    float: left;
+    background: #23282e;
+    border: 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li{
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: arial;
+    font-size: 20px;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+li:hover{
+    text-decoration: line-through;
+    background: rgba(0,0,0,0.2);
+}
+
+h1{
+    background: url(/assets/logo.png) no-repeat center;
+    margin-bottom: 0;
+    text-indent: -10000px;
+}
+
+        </style>
+        <title>todo
+        </title>
+        <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+            <link rel="stylesheet" href="/assets/styles.css" type="text/css">
+            <script>
+            jQuery(document).ready(function(){
+
+            jQuery('form').on('submit', function(){
+            alert("Idea submitted succesfully Please Refresh")
+            var item = jQuery('form input');
+            var dsc = jQuery('#dsc').val()
+            var tech = jQuery('#tcs').val()
+            var todo = {item: item.val(),sc:dsc,ts:tech};
+
+            jQuery.ajax({
+            type: 'POST',
+            url: '/profile/todo',
+            data: todo,
+            success: function(data){
+            //do something with the data via front-end framework
+        
+            location.reload();
+            }
+            });
+
+                return false;
+
+            });
+
+            // jQuery('.descr').on('click', function(){
+            // alert('description added')
+            // var dsc = jQuery('#dsc').val()
+            // // var item = jQuery('form input');
+            // // var todo = {item: item.val()};
+               
+            // jQuery.ajax({
+            // type: 'POST',
+            // url: '/profile/todod',
+            // dataa: dsc,
+            // success: function(data){
+            
+            //     //do something with the data via front-end framework
+        
+            // location.reload();
+            // }
+            // });
+
+            //     return false;
+
+            // });
+
+            jQuery('li').on('click', function(){
+    var item = jQuery(this).text().replace(/ /g, "-");
+    jQuery.ajax({
+      type: 'DELETE',
+      url: '/profile/todo/' + item,
+      success: function(data){
+        //do something with the data via front-end framework
+        location.reload();
+      }
+    });
+});
+
+});
+
+            </script>
+    </head>
+    <body>
+        
+        <h1>my idea</h1>
+        <div id="todo-table">
+            <form class=".to">
+                <input type="text" name="item" placeholder="Add YOUR IDEA " required /><br> 
+                <p></p>
+                <input type="text" id="dsc" placeholder="Add YOUR DESCRIPTION" required /><br>
+                <p></p>
+                <input type="text" id="tcs" placeholder="Add YOUR Techstack" required /><br>
+                <p></p>
+                <button type="submit">ADD </button>
+
+                <!-- <input type="text" name="item" placeholder="Add YOUR TECHSTACK" required />
+                <button type="submit">ADD Techstack </button> -->
+            </form>
+
+            <ul>
+
+            </ul>
+            </div>
+            <img style="margin-top: 32px !important;margin-left: 244px !important;" src="/assets/s.png" alt=""> 
+    </body>
+</html>

@@ -1,0 +1,158 @@
+<html>
+    <head>
+            <script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+        <style>
+                   body{
+    background: #0d1521;
+    font-family: tahoma;
+    color: #989898;
+}
+
+#todo-table{
+    position: relative;
+    width: 95%;
+    background: #090d13;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#todo-table form:after{
+    margin: 0;
+    content: '';
+    display: block;
+    clear: both;
+}
+
+input[type="text"]{
+    width: 70%;
+    padding: 20px;
+    background:#181c22;
+    border: 0;
+    float: left;
+    font-size: 20px;
+    color: #989898;
+}
+
+button{
+    padding: 20px;
+    width: 11%;
+    margin-left: 988px;
+    margin-top: -36px;
+    float: none;
+    background: #23282e;
+    border: 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li{
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: arial;
+    font-size: 20px;
+    cursor: pointer;
+    border-bottom: #fff;
+    border-radius: 8px;
+    letter-spacing: 1px;
+}
+strong{
+    color: #fff;
+}
+
+ li:hover{
+    /* text-decoration: line-through; */
+    background: rgba(0,0,0,0.2);
+    border-bottom: #fff;
+    border-radius: 8px;
+} 
+
+h1{
+    background: url(/assets/logo.png) no-repeat center;
+    margin-bottom: 0;
+    text-indent: -10000px;
+}
+.approve{
+    margin-left: 68%;
+}
+        </style>
+        <title>PROJECT APPROVAL SYSTEM</title>
+    </head>
+    <body>
+        <h1></h1>
+        <ul id="menu">
+           <% for(var i=0; i< list.length ;i++){%>
+                <li id="<%= i %>"><%= list[i]["username"] %> <p><%= list[i]["item"] %> <p><%= list[i]["describe"] %></p>
+                    <p><%= list[i]["techStack"] %></p>
+                    <strong><%= list[i]["approve"] %></strong>
+                   <span><img class="approve" src="/assets/approve.png" alt="">
+                    <img class="reject" src="/assets/rejected.png" alt=""> </span> </p> </li>
+          <%  } %>
+            <script>
+                
+            jQuery(document).ready(function(){
+                
+            jQuery('p .approve').on('click', function(){
+            // alert("idea approvved successfully")
+            // var item = jQuery('form input');
+             var ideaappr = jQuery(this).text() 
+             alert('IDEA APPROVED')
+                console.log(ideaappr);
+                
+            jQuery.ajax({
+            type: 'POST',
+            url: '/incharge',
+            data: ideaappr,
+            success: function(data){
+            //do something with the data via front-end framework
+                
+            location.reload();
+            }
+
+            });
+
+                return false;
+
+            });
+            jQuery('p .reject').on('click', function(){
+            // alert("idea approvved successfully")
+            // var item = jQuery('form input');
+             var ideaappr = jQuery(this).text() 
+             alert('IDEA rejected')
+                console.log(ideaappr);
+                
+            jQuery.ajax({
+            type: 'POST',
+            url: '/incharger',
+            data: ideaappr,
+            success: function(data){
+            //do something with the data via front-end framework
+                
+            location.reload();
+            }
+
+            });
+
+                return false;
+
+            });
+        });
+            </script>
+</ul>
+         <P></P>  
+         <p></p> 
+
+    </body>
+</html>
