@@ -12,5 +12,9 @@ To start the server following command will be used
 //nodemon app.js
 
 
-For the Incharge section Type
+For the Incharge section go to
 //localhost:3000/incharge
+
+For the upload section got to 
+//localhost:3000/uploading
+
