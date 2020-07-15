@@ -1,6 +1,6 @@
 module.exports={
     google:{
-        clientId:"612163602836-qaob5jqui863hh",
+        clientId:"61-qaob5jqui863hh",
         clentSecret:"upY-r_0"
     },
     mongodb:{
